@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://lcark.github.io/"/>
-  <updated>2019-09-26T04:32:16.190Z</updated>
+  <updated>2019-09-26T05:04:31.995Z</updated>
   <id>https://lcark.github.io/</id>
   
   <author>
@@ -21,7 +21,7 @@
     <link href="https://lcark.github.io/2019/09/24/tags/"/>
     <id>https://lcark.github.io/2019/09/24/tags/</id>
     <published>2019-09-24T13:06:00.000Z</published>
-    <updated>2019-09-26T04:32:16.190Z</updated>
+    <updated>2019-09-26T05:04:31.995Z</updated>
     
     <content type="html"><![CDATA[<h2 id="漏洞分析"><a href="#漏洞分析" class="headerlink" title="漏洞分析"></a>漏洞分析</h2><p>在mysql中可以通过<code>load data local infile &quot;/var/lib/mysql-files/test.txt&quot; into table test</code>命令，将本地文件上传至MySQL服务器，实际上，服务器可以直接发出请求来读取客户端文件，而不需要经过用户同意。<br>漏洞详情可见<a href="https://github.com/knownsec/404-Team-ShowCase/blob/master/20190801-TSec-Comprehensive%20analysis%20of%20the%20mysql%20client%20attack%20chain%28%E5%85%AC%E5%BC%80%E7%89%88%29.pdf" target="_blank" rel="noopener">LoRexxar的议题</a></p><a id="more"></a><h2 id="抓包分析"><a href="#抓包分析" class="headerlink" title="抓包分析"></a>抓包分析</h2><p>客户端发出命令请求<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925223700-eef63dc0-dfa1-1.png" alt="image.png"><br>服务端发出读取文件请求<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925223739-064eca3c-dfa2-1.png" alt="image.png"><br>客户端发送文件<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925223903-381ed7fa-dfa2-1.png" alt="image.png"><br>若是服务端直接发出读取文件请求，客户端便会直接发送本地文件。</p><p>分析完毕</p><h2 id="攻击思路"><a href="#攻击思路" class="headerlink" title="攻击思路"></a>攻击思路</h2><p>客户端连接服务器<br>服务器发送Greeting包，要求客户端提供密码<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925224231-b40f5178-dfa2-1.png" alt="image.png"><br>客户端发送登陆请求<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925224419-f4effe22-dfa2-1.png" alt="image.png"><br>服务端直接发出ok，然后服务端直接发出读取文件请求<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925224712-5ba065da-dfa3-1.png" alt="image.png"><br>客户端便会直接发送本地文件。<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925224744-6ee9ec1a-dfa3-1.png" alt="image.png"></p><h2 id="攻击总览"><a href="#攻击总览" class="headerlink" title="攻击总览"></a>攻击总览</h2><p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925225550-908cd930-dfa4-1.png" alt="image.png"><br>注意中间的query request是每次登陆成功的版本号查询<br><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925225737-d06485e4-dfa4-1.png" alt="image.png"></p><h2 id="自动化工具"><a href="#自动化工具" class="headerlink" title="自动化工具"></a>自动化工具</h2><p><img src="https://xzfile.aliyuncs.com/media/upload/picture/20190925225915-0aaf8730-dfa5-1.png" alt="image.png"><br>详见 <a href="https://github.com/lcark/MysqlClientAttack/" target="_blank" rel="noopener">https://github.com/lcark/MysqlClientAttack/</a></p>]]></content>
     
@@ -32,7 +32,7 @@
     </summary>
     
     
-      <category term="web secrity" scheme="https://lcark.github.io/categories/web-secrity/"/>
+      <category term="web security" scheme="https://lcark.github.io/categories/web-security/"/>
     
     
       <category term="mysql" scheme="https://lcark.github.io/tags/mysql/"/>
