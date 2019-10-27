@@ -237,6 +237,108 @@
   
   
   <div class="post-block home">
+    <link itemprop="mainEntityOfPage" href="https://lcark.github.io/2019/10/26/hack-lu-ctf-Car-Repair-Shop/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Lcark">
+      <meta itemprop="description" content="浮生若素，不忘初心">
+      <meta itemprop="image" content="/img/38722074.jfif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lcark">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+            
+            <a href="/2019/10/26/hack-lu-ctf-Car-Repair-Shop/" class="post-title-link" itemprop="url">hack.lu ctf-Car Repair Shop(xss, prototype pollution, bypass) </a>
+          
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">Posted on</span>
+
+              
+                
+              
+
+              <time title="Created: 2019-10-26 23:57:00" itemprop="dateCreated datePublished" datetime="2019-10-26T23:57:00+08:00">2019-10-26</time>
+            </span>
+          
+            
+
+            
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                <span class="post-meta-item-text">Edited on</span>
+                <time title="Modified: 2019-10-27 11:56:29" itemprop="dateModified" datetime="2019-10-27T11:56:29+08:00">2019-10-27</time>
+              </span>
+            
+          
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">In</span>
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/web-security/" itemprop="url" rel="index"><span itemprop="name">web security</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h2 id="题目描述"><a href="#题目描述" class="headerlink" title="题目描述"></a>题目描述</h2><p>“Your Car broke down?! Come to our shop, we repair all cars! Even very old ones.” <a href="https://car-repair-shop.fluxfingersforfuture.fluxfingers.net/" target="_blank" rel="noopener">传送门</a></p><h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>点开题目，右下角有个明显的链接<figure class="highlight plain"><figcaption><span>your cookie```, 是一个提交链接的界面</span></figcaption><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">![upload successful](/images/pasted-0.png)</span><br><span class="line"></span><br><span class="line">显然是dom-based xss&lt;br&gt;</span><br><span class="line">以下是关键代码&lt;br&gt;</span><br><span class="line">car.class.js</span><br><span class="line">```js</span><br><span class="line">class Car &#123;</span><br><span class="line">	 ……</span><br><span class="line">    repair() &#123;</span><br><span class="line">        if(urlParams.has(&apos;repair&apos;)) &#123;</span><br><span class="line">            $.extend(true, this, JSON.parse(urlParams.get(&apos;repair&apos;)))</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    ignition() &#123;</span><br><span class="line">        if (this.key == &quot;&quot;) &#123;</span><br><span class="line">            infobox(`Looks like the key got lost. No wonder the car is not starting ...`)</span><br><span class="line">        &#125;</span><br><span class="line">        if (this.key == &quot;🔑&quot;) &#123;</span><br><span class="line">            infobox(`The car started!`)</span><br><span class="line">            this.start()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+          <!--noindex-->
+          
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/10/26/hack-lu-ctf-Car-Repair-Shop/#more" rel="contents">
+                Read more &raquo;
+              </a>
+            </div>
+          
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+          <div class="post-eof"></div>
+        
+      </footer>
+  </div>
+  
+  
+  
+  </article>
+
+    
+        <article itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block home">
     <link itemprop="mainEntityOfPage" href="https://lcark.github.io/2019/09/24/tags/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -383,7 +485,7 @@
         
           <a href="/archives/">
         
-          <span class="site-state-item-count">1</span>
+          <span class="site-state-item-count">2</span>
           <span class="site-state-item-name">posts</span>
         </a>
       </div>
@@ -409,7 +511,7 @@
             <a href="/tags/">
           
         
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">tags</span>
         </a>
       </div>
